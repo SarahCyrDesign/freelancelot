@@ -46,4 +46,5 @@ group :development do
   gem 'devise'
   gem 'pundit'
   gem 'omniauth-facebook'
+  gem 'dotenv-rails'
 end
