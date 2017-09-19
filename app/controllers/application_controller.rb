@@ -16,16 +16,10 @@ class ApplicationController < ActionController::Base
       redirect_to(request.referrer || root_path)
     end
 
-    def respond_to_html_and_json(variable)
-      respond_to do |format|
-        format.html { render :index }
-        format.json { render json: variable}
-      end
-    end
-
     protected
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:role])
     end
 end

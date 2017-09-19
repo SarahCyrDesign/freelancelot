@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  enum role: [:user, :client, :admin]
+  enum role: [:freelancer, :client, :admin]
 
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :freelancer
   end
 
 
