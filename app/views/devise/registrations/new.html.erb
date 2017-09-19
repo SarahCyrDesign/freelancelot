@@ -21,7 +21,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <%= f.check_box "user[role]", "client" %>
+  <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
   <%= f.label :role, "I am a Client"%> <br>
 
   <div class="actions">
