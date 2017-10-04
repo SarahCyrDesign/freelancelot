@@ -9,7 +9,7 @@ class CreateProjects < ActiveRecord::Migration
       t.boolean :invoice_sent, default: false
       t.string :status, default: 'Received'
       t.integer :budget
-      t.integer :time_log DEFAULT 0
+      t.integer :time_log, default: 0
       t.date :start_date
       t.date :deadline
       t.integer :ticket
