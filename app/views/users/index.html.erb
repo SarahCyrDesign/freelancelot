@@ -1,5 +1,6 @@
 <h1>Freelancers</h1>
 <% @users.each do |user| %>
-  <a><%= user.email %><%link_to 'Show', user %></a>
-  <%= user.projects.length %>
+  <h3><%= user.email %></h3>
+  <h3>Current projects: <%= user.projects.length %></h3>
+  <p><%= link_to 'View', user_projects_path(user) %></p>
   <% end %>
