@@ -9,66 +9,67 @@
   </div>
 <% end %>
 
-     <%= form_for(@project) do |f| %>
-       <div>
-         <%= f.label "Project Title" %>
-         <%= f.text_field :title, placeholder: "Title", label: "Title* (Required)" %>
-      </div>
-      <div>
-        <%= f.label "Ticket Number" %>
-        <%= f.number_field :ticket, placeholder: "Ticket Number", label: "Ticket Number* (Required)" %>
-        </div>
-        <div>
-        <%= f.label "Client/Company Name" %>
-        <%= f.text_field :client_name, placeholder: "Client Name", label: "Client Name* (Required)" %>
-      </div>
-      <div>
-        <%= f.label "Project Description" %>
-        <%= f.text_area :description, placeholder: "Description", label: "Description* (Required)" %>
-        </div>
-        <div>
-        <%= f.label "Budget" %>
-        <%= f.number_field :budget, placeholder: "Budget", label: "Budget* (Required)" %>
-      </div>
-      <div>
-        <%= f.label :start_date, 'Start Date' %>
-        <%= f.date_select :start_date %>
-      </div>
-      <div>
-        <%= f.label :deadline, 'Deadline' %>
-        <%= f.date_select :deadline %>
-      </div>
-      <div>
-        <%= f.number_field :time_log, placeholder: "Hours Currently Logged", label: "Hours Currently Logged" %>
-      </div>
-      <div>
-        <%= f.label :status, 'Status of Project' %>
-      </div>
-        <%= f.label :status, 'Received' %>
-        <%= f.radio_button :status, 'Received', :checked => true %>
-        <div>
-        <%= f.label :status, 'In Progress' %>
-        <%= f.radio_button :status, 'In Progress' %>
-      </div>
-      <div>
-        <%= f.label :status, 'Completed' %>
-        <%= f.radio_button :status, 'Completed' %>
-      </div>
-      <div>
-        <%= f.label "Invoice Sent?" %>
-        <%= f.check_box :invoice_sent %>
-      </div>
-        <%= f.hidden_field :freelancer_id, :value => current_user.id unless @project.freelancer_id %>
+<%= form_for(@project) do |f| %>
+  <div>
+    <%= f.label :title, 'Project Title' %>
+    <%= f.text_field :title, placeholder: "Title", label: "Title* (Required)" %>
+  </div>
+  <div>
+    <%= f.label :ticket, 'Ticket Number' %>
+    <%= f.number_field :ticket, placeholder: "Ticket Number", label: "Ticket Number* (Required)" %>
+  </div>
+  <div>
+    <%= f.label :client_name, 'Client/Company Name' %>
+    <%= f.text_field :client_name, placeholder: "Client Name", label: "Client Name* (Required)" %>
+  </div>
+  <div>
+    <%= f.label :description, "Project Description" %>
+    <%= f.text_area :description, placeholder: "Description", label: "Description* (Required)" %>
+  </div>
+  <div>
+    <%= f.label :budget, 'Budget $' %>
+    <%= f.number_field :budget, placeholder: "Budget", label: "Budget* (Required)" %>
+  </div>
+  <div>
+    <%= f.label :start_date, 'Start Date' %>
+    <%= f.date_select :start_date %>
+  </div>
+  <div>
+    <%= f.label :deadline, 'Deadline' %>
+    <%= f.date_select :deadline %>
+  </div>
+  <div>
+    <%= f.label :time_log, 'Hours Currently Logged' %>
+    <%= f.number_field :time_log, placeholder: "Hours Currently Logged", label: "Hours Currently Logged" %>
+  </div>
+  <div>
+  <%= f.label :status, 'Status of Project' %>
+  </div>
+    <%= f.label :status, 'Received' %>
+    <%= f.radio_button :status, 'Received', :checked => true %>
+  <div>
+    <%= f.label :status, 'In Progress' %>
+    <%= f.radio_button :status, 'In Progress' %>
+  </div>
+  <div>
+    <%= f.label :status, 'Completed' %>
+    <%= f.radio_button :status, 'Completed' %>
+  </div>
+  <div>
+    <%= f.label :invoice_sent, "Invoice Sent?" %>
+    <%= f.check_box :invoice_sent %>
+  </div>
+  <%= f.hidden_field :freelancer_id, :value => current_user.id unless @project.freelancer_id %>
 
-        <%= f.label "Select or Build a New Category" %>
-        <div>
+  <%= f.label "Select or Build a New Category" %>
+      <div>
         <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
         <%= f.fields_for :categories, @project.categories.build do |categories_fields| %>
           <%= categories_fields.text_field :name %>
         <% end %>
-      </div>
+    </div>
 
-        <div class="actions">
-          <%= f.submit %>
-        </div>
-      <% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
