@@ -16,23 +16,27 @@
         <%= f.text_area :description, placeholder: "Description", label: "Description* (Required)" %>
         <%= f.number_field :budget, placeholder: "Budget", label: "Budget* (Required)" %>
         <%= f.label :start_date, 'Start Date' %>
-        <%= f.select_date(:start_date, :order => [:month, :day, :year]) %>
+        <%= f.date_select :start_date %>
         <%= f.label :deadline, 'Deadline' %>
-        <%= f.select_date(:deadline, :order => [:month, :day, :year]) %>
+        <%= f.date_select :deadline %>
         <%= f.number_field :time_log, placeholder: "Hours Currently Logged", label: "Hours Currently Logged" %>
         <%= f.label :status, 'Status of Project' %>
+        <%= f.label :status, 'Received' %>
       <%= f.radio_button :status, 'Received', :checked => true %>
+      <%= f.label :status, 'In Progress' %>
       <%= f.radio_button :status, 'In Progress' %>
+      <%= f.label :status, 'Completed' %>
       <%= f.radio_button :status, 'Completed' %>
         <%= f.label "Invoice Sent?" %>
         <%= f.check_box :invoice_sent %>
 
         <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: 'Select Category', label: "Category* (required)"%>
-        <%= f.fields_for :categories, @project.categories.build do |categories_fields| %>
-          <%= categories_fields.text_field :name, label: "Another Category (Optional)", placeholder: "category Name" %>
+        <%= f.hidden_field :freelancer_id, :value => current_user.id unless @project.freelancer_id %>
+       <%= f.fields_for :categories do |categories_field| %>
+       <%= categories_field.label "New Category" %>
+          <%= categories_field.text_field :name %>
         <% end %>
 
-        <%=  f.hidden_field :freelancer_id, :value => current_user.id unless @project.freelancer_id %>
         <div class="actions">
           <%= f.submit %>
         </div>
