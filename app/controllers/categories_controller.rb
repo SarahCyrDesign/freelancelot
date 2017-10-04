@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-    @projects = @category.projects
+    @projects = Project.all
   end
 
   def new
@@ -24,7 +24,6 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
-    end
   end
 
   def edit

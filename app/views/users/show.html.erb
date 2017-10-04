@@ -2,11 +2,11 @@
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 <% @user.projects.each do |project| %>
-  <h2><%= @project.title %><h2>
-  <h4>Ticket Number #<%= @project.ticket %><h4>
-  <p><%= @project.description %><p>
-  <p>Start Date: <%= @project.start_date %><p>
-  <p>Deadline: <%= @project.deadline %><p>
-  <p>Hours Currently Logged: <%= @project.time_log %> hours<p>
-  <p>Project Status <%= @project.status %>
+  <h2><%= project.title %><h2>
+  <h4>Ticket Number #<%= project.ticket %><h4>
+  <p><%= project.description %><p>
+  <p>Start Date: <%= project.start_date %><p>
+  <p>Deadline: <%= project.deadline %><p>
+  <p>Hours Currently Logged: <%= project.time_log %> hours<p>
+  <p>Project Status <%= project.status %>
 <% end %>
