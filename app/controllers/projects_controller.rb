@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    # @project.categories.build
     authorize @project
   end
 
@@ -18,7 +17,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @project = Project.new(project_params)
     authorize @project
 

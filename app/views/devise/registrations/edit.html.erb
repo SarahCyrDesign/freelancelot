@@ -31,6 +31,10 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <%= f.label :role, "Freelancer or Client?"%> <br>
+  <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

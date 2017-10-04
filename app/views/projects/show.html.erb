@@ -3,7 +3,7 @@
 <h4><%= @project.client_name %><h4>
 
 <% @project.categories.each do |category| %>
-  <strong><%= category.name %> | </strong>
+  <strong><%= category.name %></strong>
 <% end %>
 
 <p><%= @project.description %><p>
@@ -19,4 +19,8 @@
   <% if current_user.admin? || current_user.freelancer? %>
     <%= link_to "Edit Project", edit_project_path %>
   <% end %>
+</div>
+
+<div>
+  <%= link_to 'Delete This Project',@project, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

@@ -4,6 +4,6 @@
   </ul>
 <% end %>
 
-<% if @user.admin? || @user.freelancer? %>
+<% if current_user.admin? || current_user.freelancer? %>
   <%= link_to "Add New Category", new_category_path %>
 <% end %>
