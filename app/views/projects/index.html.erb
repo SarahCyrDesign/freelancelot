@@ -1,0 +1,8 @@
+<% @projects.each do |project| %>
+  <h2><a href="/projects/<%= project.id %>"><%= project.title %></a></h2>
+<% end %>
+
+
+<% if @user.admin? || @user.freelancer? %>
+  <%= link_to "New Project", new_project_path %>
+<% end %>

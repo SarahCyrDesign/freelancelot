@@ -1,0 +1,39 @@
+
+<% if current_user.errors.any? %>
+  <div id="error_explanation" class="errors">
+    <ul>
+    <% current_user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+     <%= form_for(@project) do |f| %>
+        <%= f.text_field :title, placeholder: "Title", label: "Title* (Required)" %>
+        <%= f.number_field :ticket, placeholder: "Ticket Number", label: "Ticket Number* (Required)" %>
+        <%= f.text_field :client_name, placeholder: "Client Name", label: "Client Name* (Required)" %>
+        <%= f.text_area :description, placeholder: "Description", label: "Description* (Required)" %>
+        <%= f.number_field :budget, placeholder: "Budget", label: "Budget* (Required)" %>
+        <%= f.label :start_date, 'Start Date' %>
+        <%= f.select_date(:start_date, :order => [:month, :day, :year]) %>
+        <%= f.label :deadline, 'Deadline' %>
+        <%= f.select_date(:deadline, :order => [:month, :day, :year]) %>
+        <%= f.number_field :time_log, placeholder: "Hours Currently Logged", label: "Hours Currently Logged" %>
+        <%= f.label :status, 'Status of Project' %>
+      <%= f.radio_button :status, 'Received', :checked => true %>
+      <%= f.radio_button :status, 'In Progress' %>
+      <%= f.radio_button :status, 'Completed' %>
+        <%= f.label "Invoice Sent?" %>
+        <%= f.check_box :invoice_sent %>
+
+        <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: 'Select Category', label: "Category* (required)"%>
+        <%= f.fields_for :categories, @project.categories.build do |categories_fields| %>
+          <%= categories_fields.text_field :name, label: "Another Category (Optional)", placeholder: "category Name" %>
+        <% end %>
+
+        <%=  f.hidden_field :freelancer_id, :value => current_user.id unless @project.freelancer_id %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
