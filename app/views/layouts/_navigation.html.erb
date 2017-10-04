@@ -1,12 +1,18 @@
-<ul>
-        <% if !current_user %>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-            <li><%= link_to "Log in", new_user_session_path %></li>
-        <% elsif current_user.client? %>
-          <li>logged in as: <%= link_to current_user.email, edit_user_registration_path %></li>
-        <% else %>
-          <li>logged in as: <%= link_to current_user.email, edit_user_registration_path %></li>
-          <li><%= link_to "My Job Applications", job_applications_path unless current_user.admin? %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
-        <% end %>
-      </ul>
+<h1><%= link_to "Freelancelot", root_path %></h1>
+<nav>
+  <ul>
+    <% if !current_user %>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+    <% elsif current_user.freelancer? %>
+      <li>%> logged in as: <%= link_to current_user.email, edit_user_registration_path %></li>
+      <li><%= link_to "My Projects", dashboard_path %></li>
+      <li><%= link_to "New Project", new_project_path %></li>
+      <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
+    <% else %>
+      <li> logged in as: <%= link_to current_user.email, edit_user_registration_path %></li>
+  <li>Search Project Ticket</li>
+      <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
+    <% end %>
+  </ul>
+</nav>
