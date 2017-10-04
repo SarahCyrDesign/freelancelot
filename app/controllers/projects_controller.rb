@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @project = Project.new(project_params)
     authorize @project
 

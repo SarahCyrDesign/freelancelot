@@ -47,4 +47,5 @@ group :development do
   gem 'pundit'
   gem 'omniauth-facebook'
   gem 'dotenv-rails'
+  gem 'pry-rails'
 end

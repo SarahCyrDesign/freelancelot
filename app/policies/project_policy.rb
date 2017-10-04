@@ -11,7 +11,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
  def show?
-    user.admin? || created_by_user? || created_by_freelancer?
+    user.admin? || created_by_freelancer?
  end
 
   # Only admin users or freelancers that created current job can update it
