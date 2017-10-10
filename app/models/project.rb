@@ -17,9 +17,11 @@ class Project < ActiveRecord::Base
     order(deadline: :asc)
   end
 
+
   def self.deadline_warning
-    # if :status != 'Completed' && :deadline - Date.today.strftime("%d").to_i < 8
-      {message: "#{:title} is due soon!"}
+    if status != 'Completed' && (:deadline.strftime("%d") - Date.today.strftime("%d")) < 8
+      "This project is due soon!"
+    end
   end
 
 end

@@ -40,6 +40,8 @@ class ProjectsController < ApplicationController
   def dashboard
     if current_user.freelancer?
       @projects = current_user.projects
+      # for deadline warning
+      flash[:notice] = @projects.deadline_warning
     else
       redirect_to root_path, alert: "You are not authorized to see that page."
     end
