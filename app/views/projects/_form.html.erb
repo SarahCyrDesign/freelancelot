@@ -32,11 +32,11 @@
   </div>
   <div>
     <%= f.label :start_date, 'Start Date' %>
-    <%= f.date_select :start_date %>
+    <%= f.date_select(:start_date, :include_blank => true, :order => [:month, :day, :year]) %>
   </div>
   <div>
     <%= f.label :deadline, 'Deadline' %>
-    <%= f.date_select :deadline %>
+    <%= f.date_select(:deadline, :include_blank => true, :order => [:month, :day, :year]) %>
   </div>
   <div>
     <%= f.label :time_log, 'Hours Currently Logged' %>

@@ -9,18 +9,17 @@ class Project < ActiveRecord::Base
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
       category = Category.find_or_create_by(category_attribute)
-      self.categories << category
+      self.project_categories.build(category: category)
     end
   end
 
   def self.list_by_deadline
-    @projects.order(deadline: :asc)
+    order(deadline: :asc)
   end
 
   def self.deadline_warning
-    if @project.status != 'Completed' && @project[:deadline - Date.today].to_i < 8
-      flash[:alert] =  "#{project.title} is due soon!"
-    end
+    # if :status != 'Completed' && :deadline - Date.today.strftime("%d").to_i < 8
+      {message: "#{:title} is due soon!"}
   end
 
 end
