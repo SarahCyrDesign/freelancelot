@@ -11,6 +11,24 @@
       <li><%= link_to "New Project", new_project_path %></li>
       <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
     <% else %>
+
+
+
+    <h3>Track the status of you Project</h3>
+    <h4>Enter Project Title or Ticket Number</h4>
+    <%= form_tag(projects_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Project Title/Ticket" %>
+      <%= submit_tag "Search" %>
+        <% if @projects.present? %>
+          <%= render @projects %>
+        <% else %>
+          <p>There are no projects containing the term(s) <%= params[:search] %>.</p>
+        <% end %>
+    <% end %>
+
+
+
+
       <li>logged in as: <%= current_user.email %></li>
       <li><%= link_to "Edit My Account", edit_user_registration_path %></li>
   <li>Search Project Ticket</li>

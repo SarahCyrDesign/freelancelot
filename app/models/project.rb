@@ -20,19 +20,19 @@ class Project < ActiveRecord::Base
     order(deadline: :asc)
   end
 
-  def self.overdue
-    if self.deadline <  Date.today
-    highlight("Deadline for " self.title " is soon")
+  def deadline_warning
+    if self.status != 'Completed' && (self.deadline.strftime("%d") - Date.today.strftime("%d")) < 8
+      "This project is due soon!"
     end
   end
 
   def not_started
-  if self.status == "Received"
-    self.title
-  else
-    "0"
+    if self.status == "Received"
+      self.title
+    else
+     "0"
+    end
   end
-end
 
   def in_progress
     if self.status == "In Progress"
@@ -50,11 +50,12 @@ end
     end
   end
 
+#search function
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%")
+    where("ticket LIKE ?", "#{search}")
+  end
 
-  # def self.deadline_warning
-  #   if status != 'Completed' && (:deadline.strftime("%d") - Date.today.strftime("%d")) < 8
-  #     "This project is due soon!"
-  #   end
-  # end
+
 
 end
