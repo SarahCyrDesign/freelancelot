@@ -5,7 +5,10 @@
       <h1>No current projects</h1>
     <% else %>
     <h3> Total Projects: <%= current_user.projects.length %> </h3>
-    <li><%= current_user.projects.not_started %> Projects Not started</li>
+    <li><%= current_user.projects.complete %> Projects Completed</li>
+    <li><%= current_user.projects.in_progress %> Projects In Progress</li>
+    <li><%= current_user.projects.not_started %> Projects Not Started</li>
+
 
         <% current_user.projects.list_by_deadline.each do |project| %>
           <h4><%= link_to project.title, project_path(project)%></h4>
