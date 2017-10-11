@@ -1,13 +1,17 @@
 <h1>Welcome to your Dashboard</h1>
+<div>
     <% if current_user.freelancer? %>
-    <%= link_to "Edit My Account", edit_user_registration_path(current_user) %>
-<% end %>
+      <%= link_to "Edit My Account", edit_user_registration_path(current_user) %>
 </div>
-  <% if @projects.empty? %>
-    <h1>No current projects</h1>
-  <% else %>
-    <% current_user.projects.list_by_deadline.each do |project| %>
-        <h4><%= link_to project.title, project_path(project)%></h4>
-        <h5>Client: <%= project.client_name %> | Ticket # <%= project.ticket %> | Deadline: <%= project.deadline %></h5>
-    <% end %>
+      <% if @projects.empty? %>
+        <h1>No current projects</h1>
+      <% else %>
+        <% current_user.projects.list_by_deadline.each do |project| %>
+        <li><%= project.complete %> Projects Completed</li>
+        <li><%= project.in_progress %> Projects In Progress</li>
+        <li><%= project.not_started %> Projects Not started</li>
+          <h4><%= link_to project.title, project_path(project)%></h4>
+          <h5>Client: <%= project.client_name %> | Ticket # <%= project.ticket %> | Deadline: <%= project.deadline %></h5>
+        <% end %>
+      <% end %>
   <% end %>

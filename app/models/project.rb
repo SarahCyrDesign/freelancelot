@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+  require 'action_view'
+  include ActionView::Helpers::TextHelper
+
   validates_presence_of :title
   validates_uniqueness_of :title
 
@@ -17,11 +20,41 @@ class Project < ActiveRecord::Base
     order(deadline: :asc)
   end
 
-
-  def self.deadline_warning
-    if status != 'Completed' && (:deadline.strftime("%d") - Date.today.strftime("%d")) < 8
-      "This project is due soon!"
+  def self.overdue
+    if self.deadline <  Date.today
+    highlight("Deadline for " self.title " is soon")
     end
   end
+
+  def not_started
+  if self.status == "Received"
+    self.title
+  else
+    "0"
+  end
+end
+
+  def in_progress
+    if self.status == "In Progress"
+      self.title
+    else
+      "0"
+    end
+  end
+
+  def complete
+    if self.status == "Completed"
+      self.count
+    else
+      "0"
+    end
+  end
+
+
+  # def self.deadline_warning
+  #   if status != 'Completed' && (:deadline.strftime("%d") - Date.today.strftime("%d")) < 8
+  #     "This project is due soon!"
+  #   end
+  # end
 
 end
