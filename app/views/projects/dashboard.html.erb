@@ -1,14 +1,17 @@
 <h1>Welcome to your Dashboard</h1>
+
 <div>
   <% if current_user.freelancer? %>
     <% if @projects.empty? %>
       <h1>No current projects</h1>
     <% else %>
-    <h3> Total Projects: <%= current_user.projects.length %> </h3>
-    <li><%= current_user.projects.complete %> Projects Completed</li>
-    <li><%= current_user.projects.in_progress %> Projects In Progress</li>
-    <li><%= current_user.projects.not_started %> Projects Not Started</li>
 
+    <h3> Total Projects: <%= current_user.projects.length %> </h3>
+    <ul>
+      <li><%= current_user.projects.complete %> Projects Completed</li>
+      <li><%= current_user.projects.in_progress %> Projects In Progress</li>
+      <li><%= current_user.projects.not_started %> Projects Not Started</li>
+    </ul>
 
         <% current_user.projects.list_by_deadline.each do |project| %>
           <h4><%= link_to project.title, project_path(project)%></h4>

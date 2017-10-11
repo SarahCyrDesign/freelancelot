@@ -20,9 +20,12 @@ class Project < ActiveRecord::Base
     order(deadline: :asc)
   end
 
+#Adjust method to make the time work and show warnings
   def self.deadline_warning
     if self.status != 'Completed' && (self.deadline.to_i.strftime("%d") - Date.today.strftime("%d")) < 8
-      "This project is due soon!"
+      self.all.select do |project|
+        project.title : "This project is due soon!"
+      end
     end
   end
 
@@ -43,7 +46,7 @@ class Project < ActiveRecord::Base
     end.count
   end
 
-#search function
+#Adjust search function so title search works
   def self.search(search)
     where("title LIKE ?", "%#{search}%")
     where("ticket LIKE ?", "%#{search}%")
