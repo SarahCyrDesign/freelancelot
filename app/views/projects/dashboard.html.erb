@@ -8,7 +8,7 @@
     <% else %>
 
     <% @projects.deadline_message.each do |project| %>
-        <%= project.title %>
+      <h2>Project:  <%= project.title %> is due soon!</h2>
     <% end %>
 
     <h3> Total Projects: <%= current_user.projects.length %> </h3>
