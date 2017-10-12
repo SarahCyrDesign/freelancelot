@@ -3,14 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
   def index
-    @projects = Project.all
-    @categories = Category.all
-#project function
-    if params[:search]
-      @projects = Project.search(params[:search]).order("created_at DESC")
-    else
-      @projects = Project.all.order('created_at DESC')
-    end
+      @projects = Project.all
   end
 
   def new
