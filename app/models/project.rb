@@ -20,11 +20,13 @@ class Project < ActiveRecord::Base
     order(deadline: :asc)
   end
 
+
   def self.deadline_message
     self.all.select do |project|
       project.status != 'Completed' && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i < 8
     end
   end
+
 
 
   def self.not_started
@@ -44,6 +46,7 @@ class Project < ActiveRecord::Base
       project.status == "Completed"
     end
   end
+
 
   def self.search(search)
     where('ticket LIKE ? OR title LIKE ?', "%#{search}%", "%#{search}%")

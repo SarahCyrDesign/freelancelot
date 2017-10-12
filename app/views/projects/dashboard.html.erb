@@ -7,6 +7,9 @@
       <h1>No current projects</h1>
     <% else %>
 
+    <% @projects.deadline_message.each do |project| %>
+        <%= project.title %>
+    <% end %>
 
     <h3> Total Projects: <%= current_user.projects.length %> </h3>
     <ul>

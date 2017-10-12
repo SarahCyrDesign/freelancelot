@@ -1,0 +1,10 @@
+
+[1mFrom:[0m /home/sarahcyr/code/labs/freelancelot/app/models/project.rb @ line 26 Project.deadline_message:
+
+    [1;34m24[0m: [32mdef[0m [1;36mself[0m.[1;34mdeadline_message[0m
+    [1;34m25[0m:   [1;36mself[0m.all.select [32mdo[0m |project|
+ => [1;34m26[0m:     binding.pry
+    [1;34m27[0m:     project.status != [31m[1;31m'[0m[31mCompleted[1;31m'[0m[31m[0m && project.deadline.strftime([31m[1;31m"[0m[31m%d[1;31m"[0m[31m[0m).to_i - [1;34;4mDate[0m.today.strftime([31m[1;31m"[0m[31m%d[1;31m"[0m[31m[0m).to_i < [1;34m8[0m
+    [1;34m28[0m:   [32mend[0m
+    [1;34m29[0m: [32mend[0m
+
