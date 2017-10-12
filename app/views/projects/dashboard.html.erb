@@ -8,9 +8,9 @@
 
     <h3> Total Projects: <%= current_user.projects.length %> </h3>
     <ul>
-      <li><%= current_user.projects.complete %> Projects Completed</li>
-      <li><%= current_user.projects.in_progress %> Projects In Progress</li>
-      <li><%= current_user.projects.not_started %> Projects Not Started</li>
+      <li><%= current_user.projects.complete.count %> Projects Completed</li>
+      <li><%= current_user.projects.in_progress.count %> Projects In Progress</li>
+      <li><%= current_user.projects.not_started.count %> Projects Not Started</li>
     </ul>
 
         <% current_user.projects.list_by_deadline.each do |project| %>

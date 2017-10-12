@@ -21,29 +21,30 @@ class Project < ActiveRecord::Base
   end
 
 #Adjust method to make the time work and show warnings
-  def self.deadline_warning
-    if self.status != 'Completed' && (self.deadline.to_i.strftime("%d") - Date.today.strftime("%d")) < 8
-      self.all.select do |project|
-        project.title : "This project is due soon!"
-      end
-    end
-  end
+  # def self.deadline_warning
+  #   if self.status != 'Completed' && (self.deadline.to_i.strftime("%d") - Date.today.strftime("%d")) < 8
+  #     self.all.select do |project|
+  #       project.title : "This project is due soon!"
+  #     end
+  #   end
+  # end
 
   def self.not_started
     self.all.select do |project|
       project.status == "Received"
-    end.count  end
+    end
+  end
 
   def self.in_progress
     self.all.select do |project|
       project.status == "In Progress"
-    end.count
+    end
   end
 
   def self.complete
     self.all.select do |project|
       project.status == "Completed"
-    end.count
+    end
   end
 
 #Adjust search function so title search works
