@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   enum role: [:freelancer, :client, :admin]
 

@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, message: "This Category Name already exists"
 
   has_many :project_categories
   has_many :projects, through: :project_categories
