@@ -1,7 +1,7 @@
 class CategoryPolicy < ApplicationPolicy
  #need to fix this to only allow freelancers to edit own categoru
   def created_by_freelancer?
-    user.freelancer == user.id
+    user.freelancer? && record.freelancer_id == user.id
   end
 
   # Only admin users or freelancers can create categories

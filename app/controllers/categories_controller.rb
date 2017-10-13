@@ -31,6 +31,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    authorize @category
     @category.update(category_params)
     redirect_to category_path, alert: "This category has been updated"
   end
