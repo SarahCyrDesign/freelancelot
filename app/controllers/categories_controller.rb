@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path, alert: "Category #{@category.name} has been created"
     else
-      render_to new_category_path
+      render new_category_path
     end
   end
 

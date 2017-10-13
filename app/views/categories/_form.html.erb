@@ -1,11 +1,8 @@
-<% if current_user.errors.any? %>
-  <div id="error_explanation" class="errors">
-    <ul>
-    <% current_user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
+<% if @category.errors.any? %>
+The following error(s) prevented this project from being saved:
+  <% @category.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
 <% end %>
 
 <%= form_for @category do |f| %>
