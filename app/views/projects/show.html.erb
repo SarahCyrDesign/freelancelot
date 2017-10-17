@@ -16,7 +16,7 @@
 
 
 <div>
-  <% if current_user.admin? || current_user.freelancer? %>
+  <% if policy(@project).update? %>
     <%= link_to "Edit Project", edit_project_path %>
     <%= link_to 'Delete This Project',@project, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
