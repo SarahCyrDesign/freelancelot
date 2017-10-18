@@ -1,5 +1,5 @@
 <% if @project.errors.any? %>
-The following error(s) prevented this project from being saved:
+  The following error(s) prevented this project from being saved:
   <% @project.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
