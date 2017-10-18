@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
   def index
-      @projects = Project.all
+    @projects = Project.all
   end
 
   def new
@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
     authorize @project
 
     if @project.save
-      redirect_to @project, alert: "Project offer successfully created"
+      redirect_to @project, alert: "Project was successfully created"
     else
       render new_project_path, alert: "Please fill out incomplete fields"
     end
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
   def update
     authorize @project
     @project.update(project_params)
-    redirect_to @project, alert: "Project offer successfully updated"
+    redirect_to @project, alert: "Project was successfully updated"
   end
 
   def dashboard
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
   def destroy
     authorize @project
     @project.destroy
-    redirect_to root_path, alert: "Project offer successfully deleted"
+    redirect_to root_path, alert: "Project was successfully deleted"
   end
 
   private

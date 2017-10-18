@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   require 'action_view'
   include ActionView::Helpers::TextHelper
 
-  validates_presence_of :title, :description, :freelancer_id, :category_id, :client_name, :budget, :start_date, :deadline, :ticket
+  validates_presence_of :title, :description, :client_name, :budget, :start_date, :deadline, :ticket
   validates_uniqueness_of :title, message: "This Project Title already exists"
   validates_presence_of :description, length: { maximum: 50 }, message: "description cannot be more than 50 characters"
   validates_uniqueness_of :ticket, message: "This Project Ticket Number already exists"

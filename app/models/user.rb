@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   enum role: [:freelancer, :client, :admin]
 
   has_many :projects, :foreign_key => 'freelancer_id'
+  has_many :categories
 
   def self.from_omniauth(auth)
     @user = find_by(provider: auth.provider, uid: auth.uid)
