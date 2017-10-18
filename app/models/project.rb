@@ -1,6 +1,4 @@
 class Project < ActiveRecord::Base
-  require 'action_view'
-  include ActionView::Helpers::TextHelper
 
   validates_presence_of :title, :description, :client_name, :budget, :start_date, :deadline, :ticket
   validates_uniqueness_of :title, message: "This Project Title already exists"
