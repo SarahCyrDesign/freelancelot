@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "welcome#home"
-  resources :search
+  resources :search, only: [:index]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :projects, :categories, :users
   get '/dashboard' => 'projects#dashboard'

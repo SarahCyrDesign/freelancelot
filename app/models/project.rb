@@ -49,11 +49,8 @@ class Project < ActiveRecord::Base
     end
   end
 
-
   def self.search(search)
     where('ticket LIKE ? OR title LIKE ?', "%#{search}%", "%#{search}%")
   end
-
-
 
 end

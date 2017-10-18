@@ -2,5 +2,5 @@
 <% @users.freelancer.each do |user| %>
   <h3><%= user.name %></h3>
   <h3>Current projects: <%= user.projects.length %></h3>
-  <p><%= link_to 'View', user_projects_path(user) %></p>
+  <p><%= link_to 'View', user_path(user) %></p>
 <% end %>
