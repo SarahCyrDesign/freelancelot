@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 end
 
   def new
-    @project = Project.new
+    @project = Project.new(freelancer_id: params[:user_id])
     authorize @project
   end
 

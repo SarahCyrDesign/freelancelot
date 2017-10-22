@@ -56,7 +56,7 @@
     <%= f.label :invoice_sent, "Invoice Sent?" %>
     <%= f.check_box :invoice_sent %>
   </div>
-  <%= f.hidden_field :freelancer_id, :value => current_user.id unless @project.freelancer_id %>
+  <%= f.hidden_field :freelancer_id, :value => current_user.id  %>
 
   <%= f.label "Select or Build a New Category" %>
       <div>

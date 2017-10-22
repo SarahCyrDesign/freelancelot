@@ -9,7 +9,7 @@
       <li>logged in as: <%= current_user.email %></li>
       <li> <%= link_to "Edit My Account", edit_user_registration_path %></li>
       <li><%= link_to "My Projects", dashboard_path %></li>
-      <li><%= link_to "New Project", new_project_path %></li>
+      <li><%= link_to "New Project", new_user_project_path(current_user) %></li>
       <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
     <% elsif current_user.client? %>
       <h3>Track the status of your Project</h3>
