@@ -1,6 +1,6 @@
 # Freelancelot
 
-Freelancelot is a web application designed as a project management tool for freelancers and a tracker for their clients. Clients are given their own ticket number for project and can search from their or find it from a list of categories provided. Freelancers can log in their hours spent on a project and update the status for their client such as "Received", "In Progress" or "Completed".
+Freelancelot is a web application designed as a project management tool for freelancers and a tracker for their clients. Clients are given their own ticket number for a project and can search from there or find it from a list of categories provided. Freelancers can log in their hours spent on a project and update the status for their client such as "Received", "In Progress" or "Completed".
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Deployment on a live system is not currently supported or recommended.
