@@ -11,7 +11,7 @@
       <li><%= link_to "My Projects", dashboard_path %></li>
       <li><%= link_to "New Project", new_project_path %></li>
       <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
-    <% else %>
+    <% elsif current_user.client? %>
       <h3>Track the status of your Project</h3>
       <h4>Enter Project Title or Ticket Number</h4>
       <%= form_tag(projects_path, :method => "get", id: "search-form") do %>
@@ -28,6 +28,12 @@
       <li>Search Project Ticket</li>
       <li><%= link_to 'Freelancers', users_path %></li>
       <li><%= link_to 'Projects by Category', categories_path %></li>
+      <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
+    <% else %>
+      <li><%= link_to "Edit My Account", edit_user_registration_path %></li>
+      <li><%= link_to 'Freelancers', users_path %></li>
+      <li><%= link_to 'Categories', categories_path %></li>
+      <li><%= link_to 'Add a Category', new_category_path %></li>
       <li><%= link_to "Log out", destroy_user_session_path, :method => 'delete' %></li>
     <% end %>
   </ul>
