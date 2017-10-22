@@ -1,6 +1,14 @@
-<h1>Freelancers</h1>
-<% @users.freelancer.each do |user| %>
-  <h3><%= user.name %></h3>
-  <h3>Current projects: <%= user.projects.length %></h3>
-  <p><%= link_to 'View', user_path(user) %></p>
+<% if current_user.client? %>
+  <h1>Freelancers</h1>
+  <% @users.freelancer.each do |user| %>
+    <h3><%= user.name %></h3>
+    <h3>Current projects: <%= user.projects.length %></h3>
+    <p><%= link_to 'View', user_path(user) %></p>
+  <% end %>
+<% elsif current_user.admin? %>
+<h1>Users</h1>
+  <% @users.each do |user| %>
+    <h3><%= user.name %></h3>
+    <p><%= link_to 'View', user_path(user) %></p>
+  <% end %>
 <% end %>
