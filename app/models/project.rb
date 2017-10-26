@@ -28,7 +28,7 @@ class Project < ActiveRecord::Base
 
   def self.deadline_message
       self.all.select do |project|
-        project.status != 'Completed' && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i < 8 && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i > 1
+        project.status != 'Completed' && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i < 8 && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i >= 1
     end
   end
 
