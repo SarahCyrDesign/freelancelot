@@ -7,6 +7,11 @@
       <h1>No current projects</h1>
     <% else %>
 
+    <% @projects.overdue_message.each do |project| %>
+      <h2>Project:  <%= project.title %> is overdue!</h2>
+    <% end %>
+
+
     <% @projects.deadline_message.each do |project| %>
       <h2>Project:  <%= project.title %> is due soon!</h2>
     <% end %>

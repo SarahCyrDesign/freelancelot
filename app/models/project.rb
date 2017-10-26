@@ -20,13 +20,17 @@ class Project < ActiveRecord::Base
     order(deadline: :asc)
   end
 
-
-  def self.deadline_message
+  def self.overdue_message
     self.all.select do |project|
-      project.status != 'Completed' && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i < 8
+      project.status != 'Completed' && project.deadline.strftime("%d").to_i < Date.today.strftime("%d").to_i
     end
   end
 
+  def self.deadline_message
+      self.all.select do |project|
+        project.status != 'Completed' && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i < 8 && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i > 1
+    end
+  end
 
 
   def self.not_started

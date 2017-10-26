@@ -1,6 +1,5 @@
 class CategoryPolicy < ApplicationPolicy
 
-  # Only admin users or freelancers can create categories
   def create?
     user.admin?
   end
