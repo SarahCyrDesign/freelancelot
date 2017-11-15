@@ -1,8 +1,15 @@
 <h1><%= @category.name %></h1>
-
-<% @category.projects.each do |project| %>
+<!--From 1st Ruby project-->
+<!--<% @category.projects.each do |project| %>
   <%= link_to project.title, project_path(project) %>
-<% end %>
+<% end %>-->
+
+<!--Load projects function-->
+<%= link_to 'Projects', category_projects_path(@category), :class => "load_projects" %><br>
+
+<div id="projects_list">
+  <ol></ol>
+</div>
 
 <% if policy(@category).update? %>
   <p><%= button_to "Edit", edit_category_path, method: "get"%></p>
