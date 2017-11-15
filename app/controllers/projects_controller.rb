@@ -8,6 +8,10 @@ class ProjectsController < ApplicationController
     @projects = Project.search(params[:search]).order("created_at DESC")
   else
     @projects = Project.all.order("created_at DESC")
+    respond_to do |f|
+      f.json { render json: @projects }
+      f.html { render :show }
+    end
   end
 end
 
@@ -18,6 +22,10 @@ end
 
   def show
     authorize @project
+    respond_to do |f|
+      f.json { render json: @project }
+      f.html { render :show }
+    end
   end
 
   def create
