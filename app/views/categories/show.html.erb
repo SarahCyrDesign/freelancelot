@@ -6,11 +6,11 @@
 
 <!--Load projects function-->
 <a href="#" class="js-next" data-id="<%=@category.id%>">Next Category</a>
-<h1 class="productName"><%= @category.name %></h1>
+<h1 class="categoryName"><%= @category.name %></h1>
 <%= link_to 'Projects', project_path(@category), :class => "load_projects" %><br>
 
 <div id="projects_list">
-  <ol></ol>
+
 </div>
 
 <% if policy(@category).update? %>
