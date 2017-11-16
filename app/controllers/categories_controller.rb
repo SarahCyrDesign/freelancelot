@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
         f.html { render :show }
       end
     else
-      render new_category_path
+      redirect_to new_category_path
     end
   end
 
