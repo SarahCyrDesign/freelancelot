@@ -17,14 +17,22 @@ class CategoriesController < ApplicationController
     authorize @category
     if @category.save
       redirect_to categories_path, alert: "Category #{@category.name} has been created"
+      respond_to do |f|
+        f.json { render json: @category }
+        f.html { render :show }
+      end
     else
       render new_category_path
     end
   end
 
   def show
-    authorize @category
-  end
+     authorize @category
+     respond_to do |f|
+       f.json { render json: @category }
+       f.html { render :show }
+     end
+   end
 
   def edit
     authorize @category

@@ -69,7 +69,7 @@ function Project(project) {
 
 Project.prototype.formatIndex = function() {
   let projectHtml = `
-    <li><a href="/projects/${this.id}" data-id="${this.id}" class="show_project">${this.title} | ${this.client_name}| ${this.ticket} | ${this.deadline}</a></li>    `
+    <li><a href="/projects/${this.id}" data-id="${this.id}" class="show_project">${this.title} | ${this.client_name}| ${this.ticket} | ${this.deadline}</a></li> `
   return projectHtml
 }
 
