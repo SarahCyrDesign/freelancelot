@@ -10,10 +10,12 @@ $(function() {
 const attachListeners = () => {
   $(document).on('click', 'a.load_projects', function(e) {
   e.preventDefault();
-  $.get(this.url, function(data) {
+  let url = `/categories/${$(".js-next").attr("data-id")}`
+  $.get(url, function(data) {
     var $list = $("#projects_list")
     if (data.projects.length === 0) {
       let projectHtml = `No projects started`
+      $list.html("")
       $list.append(projectHtml);
     } else {
         $list.html("")
