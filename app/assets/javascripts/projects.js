@@ -11,22 +11,22 @@ const attachListeners = () => {
   $(document).on('click', 'a.load_projects', function(e) {
   e.preventDefault();
   $.get(this.url, function(data) {
-    var $ol = $("#projects_list ol")
+    var $list = $("#projects_list")
     if (data.projects.length === 0) {
       let projectHtml = `No projects started`
-      $ol.append(projectHtml);
+      $list.append(projectHtml);
     } else {
-        $ol.html("")
+        $list.html("")
         data.projects.forEach(function(project) {
           let newProject = new Project(project)
           let projectHtml = newProject.formatIndex()
-          $ol.append(projectHtml);
+          $list.append(projectHtml);
         })
        }
     })
 })
 
-//Click Event
+//Click Event for projects dashboard
 
 $(document).on('click', 'a.show_project', function(e) {
   e.preventDefault();
@@ -69,7 +69,7 @@ function Project(project) {
 
 Project.prototype.formatIndex = function() {
   let projectHtml = `
-    <li><a href="/projects/${this.id}" data-id="${this.id}" class="show_project">${this.title} | ${this.client_name}| ${this.ticket} | ${this.deadline}</a></li> `
+    <a href="/projects/${this.id}" data-id="${this.id}" class="show_project">${this.title} | ${this.client_name}| ${this.ticket} | ${this.deadline}</a> `
   return projectHtml
 }
 

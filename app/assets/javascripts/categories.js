@@ -1,3 +1,5 @@
+
+//create a new category
 $(function () {
   $('form').submit(function(e) {
     console.log("submitting")
@@ -11,7 +13,7 @@ $(function () {
   });
 });
 
-
+//load next category. Need to ad previous button and clear text box
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault()

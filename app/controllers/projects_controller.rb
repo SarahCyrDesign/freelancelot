@@ -24,7 +24,7 @@ end
     authorize @project
     respond_to do |f|
       f.json { render json: @project }
-      f.html { render :show }
+      f.html
     end
   end
 
