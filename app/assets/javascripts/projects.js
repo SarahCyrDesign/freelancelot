@@ -5,7 +5,7 @@ $(function() {
 })
 
 
-//Event Listeners and click events
+//Event Listeners and click events for loading projects under each category
 
 const attachListeners = () => {
   $(document).on('click', 'a.load_projects', function(e) {

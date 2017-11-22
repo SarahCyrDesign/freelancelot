@@ -13,7 +13,7 @@ $(function () {
   });
 });
 
-//load next category. Need to ad previous button and clear text box
+//load next category
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault()

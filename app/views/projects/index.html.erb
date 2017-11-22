@@ -4,6 +4,3 @@
 <% end %> -->
 
 <!--Show project function -->
-<% @projects.each do |project| %>
-  <h2><%= link_to project.title, project_path(project), :class => "show_project", :'data-id' => project.id %></h2>
-<% end %>
