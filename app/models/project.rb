@@ -22,13 +22,13 @@ class Project < ActiveRecord::Base
 
   def self.overdue_message
     self.all.select do |project|
-      project.status != 'Completed' && project.deadline.strftime("%d").to_i < Date.today.strftime("%d").to_i
+      project.status != 'Completed' && project.deadline < Date.today
     end
   end
 
   def self.deadline_message
       self.all.select do |project|
-        project.status != 'Completed' && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i < 8 && project.deadline.strftime("%d").to_i - Date.today.strftime("%d").to_i >= 1
+        project.status != 'Completed' && (project.deadline - Date.today).to_i >= 1 && (project.deadline - Date.today).to_i < 8
     end
   end
 
