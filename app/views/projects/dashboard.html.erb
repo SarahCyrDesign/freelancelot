@@ -22,13 +22,7 @@
       <li><%= @projects.in_progress.count %> Projects In Progress</li>
       <li><%= @projects.not_started.count %> Projects Not Started</li>
     </ul>
-      <!--From 1st Ruby project-->
-      <!-- <% @projects.list_by_deadline.each do |project| %>
-        <h4><%= link_to project.title, project_path(project)%></h4>
-        <h5>Client: <%= project.client_name %> | Ticket # <%= project.ticket %> | Deadline: <%= project.deadline %></h5>
-    </div>
-      <% end %> -->
-      
+
       <!--Show project function -->
       <% @projects.list_by_deadline.each do |project| %>
         <h4><%= link_to project.title, project_path(project), :class => "show_project", :'data-id' => project.id %></h4>
