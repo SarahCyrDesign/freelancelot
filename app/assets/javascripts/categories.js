@@ -14,7 +14,7 @@ $(function () {
   });
 });
 
-//load next category
+// load next category
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault()
