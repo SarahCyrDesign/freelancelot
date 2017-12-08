@@ -10,8 +10,8 @@ $(function() {
 const attachListeners = () => {
   $(document).on('click', 'a.load_projects', function(e) {
   e.preventDefault();
-  let url = `/categories/${$(".js-next").attr("data-id")}`
-  $.get(url, function(data) {
+  let url = `/categories/${$(".js-next").attr("data-id")}/projects`
+  $.get(url, function(projectsJSON) {
     var $list = $("#projects_list")
     if (data.projects.length === 0) {
       let projectHtml = `No projects started`
@@ -60,8 +60,6 @@ function Project(project) {
   this.start_date = project.start_date
   this.deadline = project.deadline
   this.ticket = project.ticket
-
-  //category needed?
   this.category_ids = project.category_ids
   this.categories_attributes = project.categories_attributes
 }

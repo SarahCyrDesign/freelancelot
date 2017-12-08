@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get '/about' => 'welcome#about'
   resources :search, only: [:index]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :projects, :categories
+  resources :projects
+  resources :categories do
+    resources :projects, only: [:index]
+  end
   get '/dashboard' => 'projects#dashboard'
   resources :users, only: [:index, :show] do
     resources :projects, only: [:index, :show, :new, :create]

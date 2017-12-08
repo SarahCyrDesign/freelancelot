@@ -2,18 +2,23 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:index]
 
+  # GET /categories/:category_id/projects
+  # GET /projects?search=something
+  # GET /projects
   def index
-  @projects = Project.all
-  if params[:search]
-    @projects = Project.search(params[:search]).order("created_at DESC")
-  else
-    @projects = Project.all.order("created_at DESC")
+    if params[:search] #=> nil
+      @projects = Project.search(params[:search]).order("created_at DESC")
+    elsif params[:category_id] #=> nil
+      category = Category.find_by(id: params[:category_id])
+      @projects = category.projects
+    else
+      @projects = Project.all.order("created_at DESC")
+    end
     respond_to do |f|
       f.json { render json: @projects }
       f.html { render :show }
     end
   end
-end
 
   def new
     @project = Project.new(freelancer_id: params[:user_id])
