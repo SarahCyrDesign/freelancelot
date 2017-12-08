@@ -1,5 +1,6 @@
 <!--Load projects function-->
 <a href="#" class="js-next" data-id="<%=@category.id%>">Next Category</a>
+
 <h1 class="categoryName"><%= @category.name %></h1>
 <%= link_to 'Projects', projects_path(@category), :class => "load_projects" %><br>
 
