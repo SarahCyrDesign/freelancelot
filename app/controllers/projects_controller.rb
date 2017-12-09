@@ -6,9 +6,9 @@ class ProjectsController < ApplicationController
   # GET /projects?search=something
   # GET /projects
   def index
-    if params[:search] #=> nil
+    if params[:search]
       @projects = Project.search(params[:search]).order("created_at DESC")
-    elsif params[:category_id] #=> nil
+    elsif params[:category_id]
       category = Category.find_by(id: params[:category_id])
       @projects = category.projects
     else

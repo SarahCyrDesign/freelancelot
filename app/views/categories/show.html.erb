@@ -2,10 +2,12 @@
 <a href="#" class="js-next" data-id="<%=@category.id%>">Next Category</a>
 
 <h1 class="categoryName"><%= @category.name %></h1>
-<%= link_to 'Projects', projects_path(@category), :class => "load_projects" %><br>
 
+<!-- Render the text here and load projects in JSON categories.js -->
 <div id="projects_list">
-
+  <% @category.projects.each do |project| %>
+  <p><%= link_to project.title, project_path(project) %> | Client: <%= project.client_name %> | Ticket #: <%= project.ticket %> | Deadline: <%= project.deadline %></p>
+  <% end %>
 </div>
 
 <% if policy(@category).update? %>
