@@ -1,62 +1,3 @@
-
-
-
-//Event Listeners and click events for loading projects under each category
-//original code
-// const attachListeners = () => {
-//   $(document).on('click', 'a.load_projects', function(e) {
-//   e.preventDefault();
-//   let url = `/categories/${$(".js-next").attr("data-id")}/projects`
-//   $.get(url, function(projectsJSON) {
-//     var $list = $("#projects_list")
-//     if (data.projects.length === 0) {
-//       let projectHtml = `No projects started`
-//       $list.html("")
-//       $list.append(projectHtml);
-//     } else {
-//         $list.html("")
-//         data.projects.forEach(function(project) {
-//           let newProject = new Project(project)
-//           let projectHtml = newProject.formatIndex()
-//           $list.append(projectHtml);
-//         })
-//        }
-//     })
-// })
-
-
-// //Refactored Code - Moved to categories.js
-//
-// function load_projects() {
-//
-// let url = `/categories/${$(".js-next").attr("data-id")}/projects`
-//
-// $.get(url, function(projectsJSON) {
-//
-//   var $list = $("#projects_list")
-//   $list.html('')
-//   let projectHtml = '' //start text out with blank string
-//
-//   if (projectsJSON.length === 0) {
-//     projectHtml = `No projects started`
-//     $list.html('')
-//     $list.append(projectHtml);
-//
-//
-//   } else {
-//       projectsJSON.forEach(function(project) {
-//         let newProject = new Project(project)
-//         let projectHtml = newProject.formatIndex()
-//         $list.append(projectHtml);
-//       })
-//      }
-//   })
-// }
-
-
-
-
-
 //Click Event for projects dashboard
 
 $(document).on('click', 'a.show_project', function(e) {
@@ -93,7 +34,7 @@ function Project(project) {
 }
 
 
-//for projects/dashboard
+//Formating
 
 Project.prototype.formatIndex = function() {
   let projectHtml = `
