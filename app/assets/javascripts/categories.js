@@ -18,37 +18,27 @@ $(function () {
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault()
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/categories/" + nextId + ".json", function(data) {
-      var category = data; //category variable has access to projects ex) category.projects
-      $(".categoryName").text(category["name"]);
+    const nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/categories/" + nextId + ".json", function(category) {
+      //category variable has access to projects ex) category.projects
+      $(".categoryName").text(category.name);
       //Load json data into project variable
-      let projects = category.projects;
-      load_projects(projects);
+      load_projects(category.projects);
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", category["id"]);
+      $(".js-next").attr("data-id", category.id);
     });
   });
 });
 
 
-
-
 //Load projects under each category
-
 function load_projects(projects) {
-  var $list = $("#projects_list")
+  const $list = $("#projects_list")
   $list.html('')
-  let projectHtml = '' //start text out with blank string
   if (projects.length === 0) {
-    projectHtml = `No projects started`
-    $list.html('')
-    $list.append(projectHtml);
+    $list.append("No Projects Started");
   } else {
-      projects.forEach(function(project) {
-        let newProject = new Project(project)
-        let projectHtml = newProject.formatIndex()
-        $list.append(projectHtml);
-      })
-    }
+    const renderedProjects = projects.map(attr => new Project(attr).formatIndex())
+    $list.append(renderedProjects);
+  }
 }
